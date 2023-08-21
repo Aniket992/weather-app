@@ -6,13 +6,21 @@ let windspeed = document.getElementById("windspeed");
 let winddir = document.getElementById("winddirection");
 let visibility = document.getElementById("visibility");
 let text = document.getElementById("text");
-let search = document.getElementById("search");
+let search = document.getElementById("search"); 
 let image = document.getElementById("image");
 let temperature = document.getElementById("temperature");
 let datetime = document.getElementById("datetime");
 let cityName = "phagwara";
-search.addEventListener("click", async () => {
-   cityName = city.value.trim(); 
+
+city.addEventListener("focus", () => {
+  city.removeAttribute("placeholder"); 
+});
+city.addEventListener("blur", () => {
+  city.setAttribute("placeholder", "Enter city name"); 
+});
+
+    search.addEventListener("click", async () => {
+    cityName = city.value.trim(); 
 
   if (cityName) {
     await fetching(cityName); 
